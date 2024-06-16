@@ -26,7 +26,6 @@ public class TimeManager : Singleton<TimeManager>
     {
         if(Input.GetKeyDown(KeyCode.Q))
         {
-            Debug.Log("Q");
             MoveToNextDay();
         }
     }

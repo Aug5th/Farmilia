@@ -129,6 +129,7 @@ MonoBehaviour:
   _selectedTile: {fileID: 0}
   spriteRenderer: {fileID: 0}
   tileController: {fileID: 0}
+  placedResource: {fileID: 0}
 --- !u!1001 &4176052338539705317
 PrefabInstance:
   m_ObjectHideFlags: 0

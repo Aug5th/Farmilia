@@ -5,12 +5,11 @@ using UnityEngine;
 public class ResourceSpawner : Singleton<ResourceSpawner>
 {
     [SerializeField] protected Transform _resourceHolder;
-    [SerializeField] private Resource _carrot;
-
-
-    public void SpawnCarrot(Vector3 position)
+    public void SpawnResource(ResourceName resourceName, Vector3 position, Tile tile)
     {
-        var resource = Instantiate(_carrot, position, Quaternion.identity);
-        resource.transform.SetParent(_resourceHolder);
+        var resourceSO = ResourceSystem.Instance.GetResourceByName(resourceName);
+        var resource = Instantiate(resourceSO.Prefab, position, Quaternion.identity);
+        resource.transform.SetParent(tile.transform);
+        resource.SetGrownDays(resourceSO.GrownDays);
     }
 }

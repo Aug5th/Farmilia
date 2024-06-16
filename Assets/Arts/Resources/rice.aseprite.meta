@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3ed2078b85a221346b451a7b074d96b0
+guid: f55247c23cf02d14597be4b8af28a94d
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -95,7 +95,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638541647557731687
+  platformSettingsDirtyTick: 638541638444984223
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -119,9 +119,49 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: carrot_icon
+  - name: rice_Frame_0
     originalName: 
-    pivot: {x: 0.5, y: -0.071428575}
+    pivot: {x: 0.5, y: -0.33333334}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 70
+      width: 20
+      height: 21
+    spriteID: b0cece07e7af0364897c1e8202628494
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 70}
+  - name: rice_Frame_1
+    originalName: 
+    pivot: {x: 0.46428573, y: -0.21739131}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 39
+      width: 28
+      height: 23
+    spriteID: e9a043644d30f7c4a831dd1deaf1e123
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 39}
+  - name: rice_Frame_2
+    originalName: 
+    pivot: {x: 0.4666667, y: -0.1851852}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -129,8 +169,8 @@ ScriptedImporter:
       x: 4
       y: 4
       width: 30
-      height: 28
-    spriteID: 094e605da18ef4b4da73ebec80de889b
+      height: 27
+    spriteID: 444f7617cca354e4b83e1a37f61ef7dc
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -142,21 +182,39 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 812811673
-    name: carrot_icon
+    guid: -1754348403
+    name: rice
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: carrot_icon
+    - name: rice_Frame_0
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 1
-        y: 2
+        x: 6
+        y: 7
+        width: 20
+        height: 21
+      spriteId: b0cece07e7af0364897c1e8202628494
+    - name: rice_Frame_1
+      frameIndex: 1
+      additiveSortOrder: 0
+      cellRect:
+        x: 3
+        y: 5
+        width: 28
+        height: 23
+      spriteId: e9a043644d30f7c4a831dd1deaf1e123
+    - name: rice_Frame_2
+      frameIndex: 2
+      additiveSortOrder: 0
+      cellRect:
+        x: 2
+        y: 5
         width: 30
-        height: 28
-      spriteId: 094e605da18ef4b4da73ebec80de889b
+        height: 27
+      spriteId: 444f7617cca354e4b83e1a37f61ef7dc
     linkedCells: []
     parentIndex: -1
   platformSettings:

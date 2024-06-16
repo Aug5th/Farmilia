@@ -12,7 +12,6 @@ public class CameraDrag : MonoBehaviour
         // Check if the right mouse button is pressed
         if (Input.GetMouseButtonDown(1))
         {
-            Debug.Log("Button DOwn Camera Drag");
             // Record the initial mouse position
             dragOrigin = Input.mousePosition;
             return;

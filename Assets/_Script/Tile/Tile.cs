@@ -2,8 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class Tile : MonoBehaviour
+public class Tile : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private Transform _selectedTile;
 
@@ -11,7 +12,10 @@ public class Tile : MonoBehaviour
 
     [SerializeField] protected TileController tileController;
 
+    [SerializeField] protected Resource placedResource;
+
     protected List<Vector2> aroundTilesPosition;
+
 
 
 
@@ -34,7 +38,7 @@ public class Tile : MonoBehaviour
     }
 
     protected virtual void OnMouseClick() { }
-    
+
     protected void SetSelectedTile(string tileName)
     {
         _selectedTile = transform.Find(tileName);
@@ -55,10 +59,26 @@ public class Tile : MonoBehaviour
         }
     }
 
-    protected void SpawnResource()
+    protected void SpawnResource(ResourceName resourceName,Tile tile)
     {
-        ResourceSpawner.Instance.SpawnCarrot(transform.position);
+        if(!placedResource)
+        {
+            ResourceSpawner.Instance.SpawnResource(resourceName, transform.position, tile);
+            placedResource = GetComponentInChildren<Resource>();
+        }
     }
+
+    protected void HarvestResource()
+    {
+        if(!placedResource.CanHarvested)
+        {
+            return;
+        }
+
+        Destroy(placedResource.gameObject);
+        placedResource = null;
+    }
+
 
     protected bool CheckTileAround(TileType tile)
     {
@@ -75,18 +95,22 @@ public class Tile : MonoBehaviour
         return false;
     }
 
-    private void OnMouseDown()
+    public void OnPointerExit(PointerEventData eventData)
     {
-        OnMouseClick();
+        _selectedTile.gameObject.SetActive(false);
     }
 
-    private void OnMouseEnter()
+    public void OnPointerEnter(PointerEventData eventData)
     {
         _selectedTile.gameObject.SetActive(true);
     }
 
-    private void OnMouseExit()
+    public void OnPointerDown(PointerEventData eventData)
     {
-        _selectedTile.gameObject.SetActive(false);
+        if (eventData.button == PointerEventData.InputButton.Left)
+        {
+            OnMouseClick();
+        }  
     }
+
 }

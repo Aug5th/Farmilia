@@ -3,13 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
+public enum ResourceStatus
+{
+    Seed,
+    Baby,
+    Adult
+}
+
 public class Resource : MonoBehaviour
 {
-    [SerializeField] private ResourceType _resourceType;
+    [SerializeField] private ResourceStatus _resourceStatus;
     [SerializeField] private SpriteRenderer _spriteRenderer;
     [SerializeField] private Sprite _seedSprite, _babySprite, _adultSprite;
-
-   
+    [SerializeField] private int _grownDays = 0;
+    public bool CanHarvested { get; private set; } = false;
 
     private void Awake()
     {
@@ -27,24 +35,34 @@ public class Resource : MonoBehaviour
         EventManager.OnMoveToNextDay -= GrownResource;
     }
 
+    public void SetGrownDays(int date)
+    {
+        _grownDays = date;
+    }
+
     private void GrownResource(int date)
     {
+        _grownDays--;
         UpdateResourceStatus();
     }
 
     private void UpdateResourceStatus()
     {
-        switch (_resourceType)
+        switch (_resourceStatus)
         {
-            case ResourceType.Seed:
-                _resourceType = ResourceType.Baby;
+            case ResourceStatus.Seed:
+                _resourceStatus = ResourceStatus.Baby;
                 _spriteRenderer.sprite = _babySprite;
                 break;
-            case ResourceType.Baby:
-                _resourceType = ResourceType.Adult;
-                _spriteRenderer.sprite = _adultSprite;
+            case ResourceStatus.Baby:
+                if (_grownDays == 0)
+                {
+                    _resourceStatus = ResourceStatus.Adult;
+                    _spriteRenderer.sprite = _adultSprite;
+                    CanHarvested = true;
+                }
                 break;
-            case ResourceType.Adult:
+            case ResourceStatus.Adult:
                 //Debug.Log("Collectable Resource");
                 break;
         }
@@ -61,10 +79,4 @@ public class Resource : MonoBehaviour
     }
 }
 
-[Serializable]
-public enum ResourceType
-{
-    Seed,
-    Baby,
-    Adult
-}
+

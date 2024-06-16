@@ -14,8 +14,20 @@ public class MoistGroundTile : Tile
 
     protected override void OnMouseClick()
     {
-        //SpawnResource
-        SpawnResource();
+        if(!GameManager.Instance.SelectedResouce)
+        {
+            return;
+        }
+
+        if (placedResource)
+        {
+            HarvestResource();
+        }
+        else
+        {
+            SpawnResource(GameManager.Instance.SelectedResouce.ResourceName, this);
+        }
+       
         //tileController.SwitchTile(TileType.Water);
 
     }
