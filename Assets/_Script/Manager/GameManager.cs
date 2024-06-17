@@ -11,5 +11,4 @@ public class GameManager : Singleton<GameManager>
     {
         _selectedResource = resource;
     }
-
 }

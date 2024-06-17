@@ -14,7 +14,7 @@ public class MoistGroundTile : Tile
 
     protected override void OnMouseClick()
     {
-        if(!GameManager.Instance.SelectedResouce)
+        if(!GameManager.Instance.SelectedResouce || EnergyManager.Instance.OutOfEnergy())
         {
             return;
         }

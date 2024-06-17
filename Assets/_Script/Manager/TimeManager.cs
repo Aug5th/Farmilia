@@ -20,6 +20,7 @@ public class TimeManager : Singleton<TimeManager>
     {
         _date++;
         EventManager.MoveToNextDay(_date);
+        EnergyManager.Instance.RestoreAllCurrencyEnergy();
     }
 
     private void Update()

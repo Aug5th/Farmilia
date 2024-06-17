@@ -63,6 +63,7 @@ public class Tile : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
     {
         if(!placedResource)
         {
+            EnergyManager.Instance.ConsumeEnergy();
             ResourceSpawner.Instance.SpawnResource(resourceName, transform.position, tile);
             placedResource = GetComponentInChildren<Resource>();
         }
@@ -74,7 +75,7 @@ public class Tile : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
         {
             return;
         }
-
+        EnergyManager.Instance.ConsumeEnergy();
         Destroy(placedResource.gameObject);
         placedResource = null;
     }
