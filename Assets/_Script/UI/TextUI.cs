@@ -7,23 +7,26 @@ public class TextUI : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI _dateText;
     [SerializeField] TextMeshProUGUI _energyText;
+    [SerializeField] TextMeshProUGUI _goldText;
 
     private void OnEnable()
     {
         EventManager.OnMoveToNextDay += OnNextDateUpdate;
         EventManager.OnEnergyUpdate += OnEnergyUpdate;
+        EventManager.OnGoldUpdate += OnGoldUpdate;
     }
 
     private void OnDisable()
     {
         EventManager.OnMoveToNextDay -= OnNextDateUpdate;
         EventManager.OnEnergyUpdate -= OnEnergyUpdate;
+        EventManager.OnGoldUpdate -= OnGoldUpdate;
     }
 
 
     private void OnNextDateUpdate(int date)
     {
-        _dateText.text = date.ToString();
+        _dateText.text = "Date: " + date.ToString();
     }
 
     private void OnEnergyUpdate(int energy)
@@ -32,6 +35,11 @@ public class TextUI : MonoBehaviour
         {
             return;
         }
-        _energyText.text = energy.ToString();
+        _energyText.text = "Energy: " + energy.ToString();
+    }
+
+    private void OnGoldUpdate(int gold)
+    {
+        _goldText.text = "Gold: " + gold.ToString();
     }
 }

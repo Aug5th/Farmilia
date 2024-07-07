@@ -9,6 +9,7 @@ public class TimeManager : Singleton<TimeManager>
     private void Start()
     {
         _date = 1;
+        EventManager.MoveToNextDay(_date);
     }
 
     public int GetDay()

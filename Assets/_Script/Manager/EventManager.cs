@@ -10,4 +10,7 @@ public static class EventManager
 
     public static event UnityAction<int> OnEnergyUpdate;
     public static void UpdateEnergy(int energy) => OnEnergyUpdate?.Invoke(energy);
+
+    public static event UnityAction<int> OnGoldUpdate;
+    public static void UpdateGold(int gold) => OnGoldUpdate?.Invoke(gold);
 }

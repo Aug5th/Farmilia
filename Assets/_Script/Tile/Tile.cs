@@ -76,6 +76,7 @@ public class Tile : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
             return;
         }
         EnergyManager.Instance.ConsumeEnergy();
+        GoldManager.Instance.AddGold(3);
         Destroy(placedResource.gameObject);
         placedResource = null;
     }
